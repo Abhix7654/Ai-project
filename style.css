@@ -1,0 +1,19 @@
+*{
+margin: 0;
+padding: 0;
+ box-sizing: border-box;
+}
+html,body{
+width: 100%;
+height: 100%;
+}
+
+#videoElement, #canvasElement {
+        position: absolute;
+        top: 100px; /* Adjust based on your layout */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #canvasElement {
+        pointer-events: none; /* Allows interactions with the video element */
+    }
