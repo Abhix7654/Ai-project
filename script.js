@@ -27,6 +27,10 @@ async function loadModel() {
 
 // Function to detect objects and draw bounding boxes
 async function detectObjects() {
+    if (!model) {
+        console.error('Model not loaded yet.');
+        return;
+    }
     const predictions = await model.detect(videoElement);
     console.log('Predictions:', predictions);
     drawBoxes(predictions);
@@ -69,5 +73,8 @@ async function startDetection() {
 // Initialize camera and start detection when the document is ready
 document.addEventListener('DOMContentLoaded', () => {
     startCamera();
-    startDetection().catch(console.error);
+    videoElement.addEventListener('loadeddata', () => {
+        console.log('Video stream loaded');
+        startDetection().catch(console.error);
+    });
 });
